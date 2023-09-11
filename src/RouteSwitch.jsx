@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import Details from "./pages/details";
 import ScrollToTop from "./utils/ScrollToTop";
+// import Footer from "./components/layout/footer";
 
 const RouteSwitch = () => {
   return (
@@ -11,6 +12,7 @@ const RouteSwitch = () => {
         <Route path="/" element={<Home />} />
         <Route path="/movie-details" element={<Details />} />
       </Routes>
+      {/* <Footer/> */}
     </>
   );
 };

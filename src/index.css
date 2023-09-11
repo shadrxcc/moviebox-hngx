@@ -42,3 +42,30 @@ html body {
   background: rgba(243, 244, 246, 0.5);
   backdrop-filter: blur(1px);
 }
+
+.quiz {
+  border-radius: 20px;
+  border: 1px solid rgba(190, 18, 60, 0.7);
+  background: rgba(248, 231, 235, 0.4);
+  width: 170px;
+  height: 210px;
+  flex-shrink: 0;
+}
+
+.trailer {
+  border-radius: 20px;
+  background: url(/src/assets/mip.svg), lightgray 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 449px;
+}
+
+.tag {
+  border-radius: 15px;
+  border: 1px solid #f8e7eb;
+  padding: 3px 16px;
+  color: #b91c1c;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+}

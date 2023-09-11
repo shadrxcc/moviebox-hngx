@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        buttonred: 'var(--rose-700, #BE123C);'
+        buttonred: 'var(--rose-700, #BE123C);',
+        buttonfaintred: 'rgba(190, 18, 60, 0.20)'
       }
     },
   },
