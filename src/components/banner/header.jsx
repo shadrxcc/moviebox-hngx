@@ -1,6 +1,6 @@
-import logo from "../assets/tv.svg";
-import search from "../assets/search.svg";
-import menu from "../assets/menu.svg";
+import logo from "../../assets/tv.svg";
+import search from "../../assets/search.svg";
+import menu from "../../assets/menu.svg";
 
 const Header = () => {
   return (

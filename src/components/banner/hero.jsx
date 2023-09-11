@@ -1,7 +1,7 @@
-import imdb from "../../src/assets/imdb.svg";
-import tomato from "../../src/assets/tomatoes.svg";
-import play from "../../src/assets/Play.svg";
-import Button from "./button";
+import imdb from "../../../src/assets/imdb.svg";
+import tomato from "../../../src/assets/tomatoes.svg";
+import play from "../../../src/assets/Play.svg";
+import Button from "../ui/button";
 
 const Hero = () => {
   return (
