@@ -1,6 +1,6 @@
-import Wrapper from "./Wrapper";
 import Header from "./header";
 import Hero from "./hero";
+import Wrapper from "../wrapper";
 
 const Banner = () => {
   return (

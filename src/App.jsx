@@ -1,9 +1,9 @@
-import Banner from "./components/banner";
+import Banner from "./components/banner/banner";
 
 function App() {
   return (
     <>
-     <Banner/>
+      <Banner />
     </>
   );
 }
