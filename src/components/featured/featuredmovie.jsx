@@ -1,15 +1,16 @@
 import Card from "../ui/card";
-import stranger from "../../assets/stranger.svg";
+// import stranger from "../../assets/stranger.svg";
 import favourite from "../../assets/Favorite.svg";
 import imdb from "../../../src/assets/imdb.svg";
 import tomato from "../../../src/assets/tomatoes.svg";
+import PropTypes from "prop-types";
 
-const Featuredmovie = () => {
+const Featuredmovie = (props) => {
   return (
-    <Card className="w-[250px] flex flex-col gap-y-3">
+    <Card key={props.id} className="w-[250px] flex flex-col gap-y-3">
       <div
         className="w-full bg-no-repeat h-[370px]"
-        style={{ backgroundImage: `url(${stranger})` }}
+        style={{ backgroundImage: `url(${props.background})` }}
       >
         <div className="flex p-4 justify-between items-center">
           <span id="movietype" className="py-[3px] px-2">
@@ -21,7 +22,7 @@ const Featuredmovie = () => {
       </div>
       <div className="font-bold flex flex-col gap-y-3">
         <p className="text-xs text-[#9CA3AF]">USA, 2016 - Current</p>
-        <p className="text-lg text-[#111827]">Stranger Things</p>
+        <p className="text-lg text-[#111827]">{props.title}</p>
       </div>
 
       <div className="flex items-center justify-between">
@@ -46,3 +47,9 @@ const Featuredmovie = () => {
 };
 
 export default Featuredmovie;
+
+Featuredmovie.propTypes = {
+  id: PropTypes.number,
+  background: PropTypes.node.isRequired,
+  title: PropTypes.string,
+};
