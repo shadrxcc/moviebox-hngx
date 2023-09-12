@@ -6,13 +6,13 @@ import tomato from "../../../src/assets/tomatoes.svg";
 import PropTypes from "prop-types";
 
 const Featuredmovie = (props) => {
+  const imageUrl = import.meta.env.VITE_IMAGE_URL;
+
   return (
-    <Card key={props.id} className="w-[250px] flex flex-col gap-y-3">
-      <div
-        className="w-full bg-no-repeat h-[370px]"
-        style={{ backgroundImage: `url(${props.background})` }}
-      >
-        <div className="flex p-4 justify-between items-center">
+    <Card key={props.id} className="flex flex-col gap-y-3">
+      <div className="relative">
+        <img src={`${imageUrl}${props.background}`} alt="" />
+        <div className="flex p-4 absolute top-0 w-full justify-between items-center">
           <span id="movietype" className="py-[3px] px-2">
             <p className="text-xs text-[#111827] font-bold">TV SERIES</p>
           </span>
@@ -20,6 +20,7 @@ const Featuredmovie = (props) => {
           <img src={favourite} alt="" />
         </div>
       </div>
+
       <div className="font-bold flex flex-col gap-y-3">
         <p className="text-xs text-[#9CA3AF]">USA, 2016 - Current</p>
         <p className="text-lg text-[#111827]">{props.title}</p>
@@ -50,6 +51,6 @@ export default Featuredmovie;
 
 Featuredmovie.propTypes = {
   id: PropTypes.number,
-  background: PropTypes.node.isRequired,
+  background: PropTypes.node,
   title: PropTypes.string,
 };
