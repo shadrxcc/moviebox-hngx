@@ -36,7 +36,6 @@ const MovieDetails = () => {
     fetchDetails();
   }, [id, accesstoken, detailUrl]);
 
-
   return (
     <div className="text-black md:ml-[13rem] p-3.5 md:p-8 overflow-y-auto flex-1">
       <div
@@ -51,7 +50,10 @@ const MovieDetails = () => {
 
       <div className="flex flex-col lg:flex-row justify-between gap-y-4 py-8 lg:items-center">
         <div className="flex flex-col lg:flex-row gap-y-4 gap-x-4 lg:items-center">
-          <p data-testid="movie-title" className="md:text-2xl text-xl font-medium text-[#404040]">
+          <p
+            data-testid="movie-title"
+            className="md:text-2xl text-xl font-medium text-[#404040]"
+          >
             {details.title} • 2022 • PG-13 • 2h 10m
           </p>
           <div className="flex gap-x-3">
@@ -67,7 +69,9 @@ const MovieDetails = () => {
         <div className="flex items-center gap-x-2">
           <img src={star} alt="" />
           <span className="flex items-center gap-x-2">
-            <p className="text-[#E8E8E8] font-medium text-2xl">{details.vote_average}</p>
+            <p className="text-[#E8E8E8] font-medium text-2xl">
+              {details.vote_average}
+            </p>
             <p className="text-[#666] font-medium">|</p>
             <p className="text-xl text-[#666] font-medium">350k</p>
           </span>
@@ -75,7 +79,9 @@ const MovieDetails = () => {
       </div>
       <div className="flex flex-col gap-y-4 gap-x-3 md:flex-row">
         <div className="flex-[1.4_1_0] flex flex-col gap-y-4 lg:gap-y-16">
-          <p className="lg:text-xl">{details.overview}</p>
+          <p data-testid="movie-overview" className="lg:text-xl">
+            {details.overview}
+          </p>
 
           <p>
             Director: <span className="text-buttonred">Joseph Kosinski</span>
