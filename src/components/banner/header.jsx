@@ -1,6 +1,6 @@
 import logo from "../../assets/tv.svg";
 import search from "../../assets/Search.svg";
-import menu from "../../assets/menu.svg";
+import menu from "../../assets/Menu.svg";
 import { useLocation } from "react-router-dom";
 
 const Header = () => {
