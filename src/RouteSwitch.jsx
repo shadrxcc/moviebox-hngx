@@ -1,20 +1,21 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home";
-import Details from "./pages/details";
 import ScrollToTop from "./utils/ScrollToTop";
-import Search from "./components/search";
-// import Footer from "./components/layout/footer";
+
+// Lazy load your page components
+const Home = lazy(() => import("./pages/home"));
+const Details = lazy(() => import("./pages/details"));
+const Search = lazy(() => import("./components/search"));
 
 const RouteSwitch = () => {
   return (
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movie/:id" element={<Details />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><Home /></Suspense>} />
+        <Route path="/movie/:id" element={<Suspense fallback={<div>Loading...</div>}><Details /></Suspense>} />
+        <Route path="/search" element={<Suspense fallback={<div>Loading...</div>}><Search /></Suspense>} />
       </Routes>
-      {/* <Footer/> */}
     </>
   );
 };

@@ -81,18 +81,16 @@ const Search = (props) => {
 
         <div
           className={`${
-            searchResults ? "border-x" : ""
-          }md:w-[25rem] m-auto lg:w-[35rem]`}
+            searchResults.length > 0 ? "bg-white" : ""
+          } max-h-[500px] overflow-y-auto overflow-x-hidden  mx-auto lg:w-[50rem]`}
         >
           {loading && (
-            <BiLoader
-              id="loader"
-              className="m-auto mt-10"
-              size={30}
-              color="#000"
-            />
+            <div className="py-2">
+              <BiLoader id="loader" className="m-auto" size={30} color="#000" />
+            </div>
           )}
-          <div className="flex bg-white flex-col p-3 gap-y-4">
+
+          <div className="flex flex-col p-3 gap-y-4">
             {searchResults.map((movie) => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
                 <div

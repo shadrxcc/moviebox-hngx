@@ -32,7 +32,7 @@ const Header = (props) => {
         <div className="flex gap-x-4 md:gap-x-7 items-center">
           <img
             onClick={props.setSearch}
-            className="md:hidden"
+            className="md:hidden w-7"
             src={search}
             alt=""
           />
