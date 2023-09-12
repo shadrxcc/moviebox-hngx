@@ -69,3 +69,10 @@ html body {
   font-style: normal;
   font-weight: 500;
 }
+
+#best-movies {
+  border-radius: 10px;
+  background: rgba(18, 18, 18, 0.5);
+  backdrop-filter: blur(2px);
+  padding: 12px 16px;
+}
