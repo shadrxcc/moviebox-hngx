@@ -1,13 +1,18 @@
 import logo from "../../assets/tv.svg";
 import search from "../../assets/Search.svg";
 import menu from "../../assets/Menu.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const Header = () => {
-  const location = useLocation()
+  const location = useLocation();
+  const { id } = useParams();
 
   return (
-    <header className={`${location.pathname === '/movie-details' ? "md:hidden" : ""} text-white py-6 px-4 lg:px-20 flex justify-between items-center`}>
+    <header
+      className={`${
+        location.pathname === `/movie/${id}` ? "md:hidden" : ""
+      } text-white py-6 px-4 lg:px-20 flex justify-between items-center`}
+    >
       <div className="flex max-w-full gap-x-2 md:gap-x-6 items-center">
         <img className="w-[40px]" src={logo} alt="moviebox logo" />
         <p className="text-lg font-bold leading-6">MovieBox</p>

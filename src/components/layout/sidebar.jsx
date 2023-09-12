@@ -1,14 +1,16 @@
 import logo from "../../assets/tv.svg";
 import { sidenav } from "../data/sidenav";
 import logout from "../../assets/Logout.svg";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="text-black hidden md:flex fixed flex-col justify-evenly rounded-br-[45px] rounded-tr-[45px] px-5 border-r w-fit h-screen">
-      <div className="flex items-center gap-x-6">
+      <Link to={`/`}> <div className="flex items-center gap-x-6">
         <img className="w-[40px]" src={logo} alt="" />
         <p className="text-lg font-bold leading-6">MovieBox</p>
-      </div>
+      </div></Link>
+     
 
       <div>
         <ul className="flex flex-col gap-y-9 justify-center">

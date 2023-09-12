@@ -42,7 +42,7 @@ const Featuredsection = () => {
       </h2>
       <div className="grid gap-y-20 gap-x-20 md:grid-cols-3 xl:grid-cols-4">
         {featured.map((movie) => {
-        return <Featuredmovie key={movie.id} title={movie.original_title} background={movie.poster_path} />
+        return <Featuredmovie key={movie.id} id={movie.id} releasedate={movie.release_date} title={movie.original_title} background={movie.poster_path} />
       })}
       </div>
       

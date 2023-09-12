@@ -10,7 +10,7 @@ const RouteSwitch = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movie-details" element={<Details />} />
+        <Route path="/movie/:id" element={<Details />} />
       </Routes>
       {/* <Footer/> */}
     </>
