@@ -4,8 +4,8 @@
 }
 
 html body {
-  width: 100%;
-  /* max-width: 1280px; */
+  width: 100vw;
+  max-width: 1536px;
   margin: 0 auto;
   padding: 0;
   font-family: "DMSans";
@@ -75,4 +75,42 @@ html body {
   background: rgba(18, 18, 18, 0.5);
   backdrop-filter: blur(2px);
   padding: 12px 16px;
+}
+
+#loader {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(32, 32, 32, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: scale 300ms ease-in-out forwards;
 }
