@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 const Search = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+//   const [noresult, setNoResult] = useState(false)
   const [input, setInput] = useState("");
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
   const imageUrl = import.meta.env.VITE_IMAGE_URL;
