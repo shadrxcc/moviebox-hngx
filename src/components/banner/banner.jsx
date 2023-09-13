@@ -3,11 +3,13 @@ import Hero from "./hero";
 import Wrapper from "../wrapper";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import errorillustration from "../../assets/404-error.png";
 import { shortenText } from "../../utils/shortenTextFunc";
 
 const Banner = (props) => {
   const [upcoming, setUpcoming] = useState([]); //upcoming movies state
   const [currentIndex, setCurrentIndex] = useState(0); //current upcoming movie index state
+  const [error, setError] = useState("");
 
   const apiUrl = import.meta.env.VITE_UPCOMING_URL;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
@@ -28,14 +30,10 @@ const Banner = (props) => {
           const data = await response.json();
           setUpcoming(data.results);
         } else {
-          console.error(
-            "Failed to fetch data:",
-            response.status,
-            response.statusText
-          );
+          setError("Error getting movies");
         }
       } catch (error) {
-        console.error("Error fetching data:", error);
+        setError("Network Error");
       }
     };
 
@@ -62,7 +60,12 @@ const Banner = (props) => {
       style={
         isValidIndex
           ? {
-              backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(${imageUrl}${upcoming[currentIndex].backdrop_path})`,
+              backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url(${
+                error
+                  ? errorillustration
+                  : imageUrl + upcoming[currentIndex].backdrop_path
+              })`,
+
               backgroundColor: "lightgray",
             }
           : null
@@ -72,6 +75,7 @@ const Banner = (props) => {
       <Header setSearch={props.setSearch} />
       {isValidIndex && (
         <Hero
+          error={error}
           id={upcoming[currentIndex].id}
           vote_count={upcoming[currentIndex].vote_count}
           title={shortenText(upcoming[currentIndex].title, 21)}

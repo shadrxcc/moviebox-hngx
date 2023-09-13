@@ -7,41 +7,54 @@ import { useNavigate } from "react-router-dom";
 
 const Hero = (props) => {
   const navigate = useNavigate();
-  
+
   return (
-    <div className="w-fit px-4 lg:px-20 flex flex-col gap-y-4">
-      <h1
-        id="movie-title"
-        className="font-bold stroke-black stroke-[2px] w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
-      >
-        {props.title}
-      </h1>
-      <div className="flex gap-x-8 w-fit items-center">
-        <span className="flex gap-x-[10px] items-center">
-          <img src={imdb} alt="" />
-          <p className="text-xs">{props.vote_count} / 100</p>
-        </span>
+    <>
+      {props.error ? (
+        <div className="w-fit px-4 lg:px-20 flex flex-col gap-y-4">
+          <h1
+            id="error-message"
+            className="font-bold w-[7em] max-[280px]:text-[30px] text-black max-[280px]:w-auto text-[48px]"
+          >
+            {props.error}
+          </h1>
+        </div>
+      ) : (
+        <div className="w-fit px-4 lg:px-20 flex flex-col gap-y-4">
+          <h1
+            id="movie-title"
+            className="font-bold w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
+          >
+            {props.title}
+          </h1>
+          <div className="flex gap-x-8 w-fit items-center">
+            <span className="flex gap-x-[10px] items-center">
+              <img src={imdb} alt="" />
+              <p className="text-xs">{props.vote_count} / 100</p>
+            </span>
 
-        <span className="flex gap-x-[10px] items-center">
-          <img src={tomato} alt="" />
-          <p className="text-xs">97%</p>
-        </span>
-      </div>
+            <span className="flex gap-x-[10px] items-center">
+              <img src={tomato} alt="" />
+              <p className="text-xs">97%</p>
+            </span>
+          </div>
 
-      <div>
-        <p className="text-sm lg:w-[35%] xl:w-[26%] font-medium">
-          {props.description}
-        </p>
-      </div>
+          <div>
+            <p className="text-sm lg:w-[35%] xl:w-[26%] font-medium">
+              {props.description}
+            </p>
+          </div>
 
-      <Button
-        onClick={() => navigate(`/movie/${props.id}`)}
-        className="bg-buttonred w-fit"
-      >
-        <img src={play} alt="" />
-        Watch trailer
-      </Button>
-    </div>
+          <Button
+            onClick={() => navigate(`/movie/${props.id}`)}
+            className="bg-buttonred w-fit"
+          >
+            <img src={play} alt="" />
+            Watch trailer
+          </Button>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -52,5 +65,6 @@ Hero.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   vote_count: PropTypes.number,
+  error: PropTypes.func,
 };
 // validating proptypes
