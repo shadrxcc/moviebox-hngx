@@ -80,13 +80,8 @@ const MovieDetails = () => {
             <div className="flex flex-col lg:flex-row justify-between gap-y-4 py-8 lg:items-center">
               <div className="flex flex-1 flex-col lg:flex-row gap-y-4 gap-x-4 lg:items-center">
                 <div className="flex items-center gap-x-3 md:text-2xl text-xl font-medium text-[#404040]">
-                  <p
-                    data-testid="movie-title"
-                  >
-                    {details.title} •  
-                  </p>
-                  <p data-testid="movie-release-date">2022</p> •
-                  <p>PG-13</p> •
+                  <p data-testid="movie-title">{details.title} •</p>
+                  <p data-testid="movie-release-date">2022</p> •<p>PG-13</p> •
                   <p data-testid="movie-runtime">{details.runtime}mins</p>
                 </div>
 
@@ -103,9 +98,12 @@ const MovieDetails = () => {
               <div className="flex items-center gap-x-2">
                 <img src={star} alt="" />
                 <span className="flex items-center gap-x-2">
-                  <p className="text-[#E8E8E8] font-medium text-2xl">
-                    {details.vote_average.toFixed(1)}
-                  </p>
+                  {details && details.vote_average !== undefined && (
+                    <p className="text-[#E8E8E8] font-medium text-2xl">
+                      {details.vote_average.toFixed(1)}
+                    </p>
+                  )}
+
                   <p className="text-[#666] font-medium">|</p>
                   <p className="text-xl text-[#666] font-medium">350k</p>
                 </span>

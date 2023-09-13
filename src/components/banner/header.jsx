@@ -1,7 +1,7 @@
 import logo from "../../assets/tv.svg";
 import search from "../../assets/Search.svg";
 import menu from "../../assets/Menu.svg";
-import { useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Header = (props) => {
@@ -10,16 +10,25 @@ const Header = (props) => {
 
   return (
     <>
-    {/* header: on details page show only on mobile screens  */}
+      {/* header: on details page show only on mobile screens  */}
       <header
         className={`${
           location.pathname === `/movie/${id}` ? "md:hidden" : ""
         } text-white py-6 px-4 lg:px-20 flex justify-between items-center`}
       >
-        <div className="flex max-w-full gap-x-2 md:gap-x-6 items-center">
-          <img className="w-[40px]" src={logo} alt="moviebox logo" />
-          <p className="text-lg font-bold leading-6">MovieBox</p>
-        </div>
+        <Link to={`/`}>
+          {" "}
+          <div className="flex max-w-full gap-x-2 md:gap-x-6 items-center">
+            <img className="w-[40px]" src={logo} alt="moviebox logo" />
+            <p
+              className={`${
+                location.pathname === `/movie/${id}` ? "text-black" : ""
+              } text-lg font-bold leading-6`}
+            >
+              MovieBox
+            </p>
+          </div>
+        </Link>
 
         {/* search modal button toggle to show on tab and desktop screens */}
         <button
