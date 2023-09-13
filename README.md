@@ -8,7 +8,16 @@ A movie discovery web application that allows users to search for movies, view d
 - Tailwind
 - TMDB API
 
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js and npm installed on your computer.
+- Git installed on your computer.
+
 ### Setup
+
+To get a local copy up and running, follow these simple steps:
 
 1. Open your terminal
 
