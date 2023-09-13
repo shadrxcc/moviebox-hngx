@@ -10,6 +10,7 @@ const Header = (props) => {
 
   return (
     <>
+    {/* header: on details page show only on mobile screens  */}
       <header
         className={`${
           location.pathname === `/movie/${id}` ? "md:hidden" : ""
@@ -20,6 +21,7 @@ const Header = (props) => {
           <p className="text-lg font-bold leading-6">MovieBox</p>
         </div>
 
+        {/* search modal button toggle to show on tab and desktop screens */}
         <button
           onClick={props.setSearch}
           className="hidden md:flex px-[10px] md:w-[25rem] lg:w-[35rem] py-[6px] border rounded-md border-[#D1D5DB] justify-between items-center"
@@ -51,3 +53,4 @@ export default Header;
 Header.propTypes = {
   setSearch: PropTypes.func,
 };
+// validating proptypes

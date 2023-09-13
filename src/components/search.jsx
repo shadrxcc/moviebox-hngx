@@ -9,7 +9,9 @@ import PropTypes from "prop-types";
 const Search = (props) => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
-//   const [noresult, setNoResult] = useState(false)
+  const [noResult, setNoResult] = useState("");
+  const [error, setError] = useState("");
+
   const [input, setInput] = useState("");
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
   const imageUrl = import.meta.env.VITE_IMAGE_URL;
@@ -29,15 +31,19 @@ const Search = (props) => {
       if (response.ok) {
         const data = await response.json();
         setSearchResults(data.results);
+
+        if (data.results.length === 0) {
+          setNoResult("No results found.");
+        } else {
+          setNoResult("");
+        }
       } else {
-        console.error(
-          "Failed to fetch data:",
-          response.status,
-          response.statusText
-        );
+        setNoResult("");
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      setLoading(false);
+      setNoResult("");
+      setError("Network error occurred. Please try again later :)");
     } finally {
       setLoading(false);
     }
@@ -47,6 +53,12 @@ const Search = (props) => {
     setInput(value);
     getResults(value);
     setLoading(true);
+    setError("");
+    setNoResult("");
+    if (value.trim() === "") {
+      setError("");
+      setNoResult("");
+    } //set error messages to empty when input is empty
   };
 
   return (
@@ -82,7 +94,11 @@ const Search = (props) => {
 
         <div
           className={`${
-            searchResults.length > 0 ? "bg-white" : ""
+            (input.trim() !== "" && noResult) ||
+            error ||
+            searchResults.length > 0
+              ? "bg-white"
+              : ""
           } max-h-[500px] overflow-y-auto overflow-x-hidden  mx-auto lg:w-[50rem]`}
         >
           {loading && (
@@ -92,6 +108,11 @@ const Search = (props) => {
           )}
 
           <div className="flex flex-col p-3 gap-y-4">
+            {input.trim() !== "" && noResult && (
+              <p className="text-black text-lg font-medium">{noResult}</p>
+            )}
+            {error && <p className="text-black text-lg font-medium">{error}</p>}
+
             {searchResults.map((movie) => (
               <Link to={`/movie/${movie.id}`} key={movie.id}>
                 <div

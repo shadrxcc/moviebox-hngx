@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 
+//custom modal component
+
 const Backdrop = (props) => {
   return <div onClick={props.onClose} className="backdrop"></div>;
 };
@@ -45,3 +47,4 @@ Modal.propTypes = {
   onClose: PropTypes.func,
   children: PropTypes.node,
 };
+// validating proptypes

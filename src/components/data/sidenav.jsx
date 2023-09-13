@@ -3,6 +3,7 @@ import movies from "../../assets/movieprojector.svg";
 import tv from "../../assets/TVShow.svg";
 import calender from "../../assets/Calendar.svg";
 
+//side menu items to dynamically map from and display
 export const sidenav = [
   {
     id: 1,
@@ -11,13 +12,13 @@ export const sidenav = [
   },
 
   {
-    id: 1,
+    id: 2,
     text: "Movies",
     icon: movies,
   },
 
   {
-    id: 15,
+    id: 3,
     text: "TV Series",
     icon: tv,
   },

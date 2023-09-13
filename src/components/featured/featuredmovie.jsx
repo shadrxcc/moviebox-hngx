@@ -8,6 +8,8 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
+//featured movie card layout
 const Featuredmovie = (props) => {
   const imageUrl = import.meta.env.VITE_IMAGE_URL;
   const [liked, setLiked] = useState(false);
@@ -15,7 +17,7 @@ const Featuredmovie = (props) => {
 
   const handleLikeClick = (e) => {
     setLiked(!liked);
-    e.stopPropagation();
+    e.stopPropagation(); //stop like component from firing the onclick event of parent element
   };
 
   return (
@@ -54,7 +56,7 @@ const Featuredmovie = (props) => {
       <div className="flex items-center justify-between">
         <span className="flex gap-x-[10px] items-center">
           <img src={imdb} alt="" />
-          <p className="text-xs">86.0 / 100</p>
+          <p className="text-xs">{props.vote_count} / 100</p>
         </span>
 
         <span className="flex gap-x-[10px] items-center">
@@ -79,4 +81,5 @@ Featuredmovie.propTypes = {
   background: PropTypes.node,
   title: PropTypes.string,
   releasedate: PropTypes.any,
+  vote_count: PropTypes.number
 };

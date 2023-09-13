@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 
+//custom card component
 const Card = (props) => {
   const classes = `card ${props.className}`;
   return (

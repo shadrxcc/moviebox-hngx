@@ -42,6 +42,7 @@ const MovieDetails = () => {
   return (
     <Wrapper>
       <div className="text-black md:ml-[13rem] p-3.5 md:p-8 overflow-y-auto flex-1">
+        {/* step back to prev location */}
         <button
           onClick={() => navigate(-1)}
           className="flex md:hidden text-buttonred items-center my-6"
@@ -53,6 +54,7 @@ const MovieDetails = () => {
         <div
           style={{
             backgroundImage: `url(${imageUrl}${details.backdrop_path})`,
+            backgroundColor: "lightgray",
           }}
           className="trailer flex flex-col justify-center w-full"
         >

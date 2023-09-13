@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
 
+//wrapper for jsx components
 const Wrapper = (props) => {
   return (
-    <div onClick={props.onClick} style={props.style} className={props.className} id={props.id}>
+    <div
+      onClick={props.onClick}
+      style={props.style}
+      className={props.className}
+      id={props.id}
+    >
       {props.children}
     </div>
   );
@@ -11,9 +17,9 @@ const Wrapper = (props) => {
 export default Wrapper;
 
 Wrapper.propTypes = {
-  className: PropTypes.node,
+  className: PropTypes.string,
   children: PropTypes.node,
-  id: PropTypes.node,
-  style: PropTypes.node,
-  onClick: PropTypes.func
+  id: PropTypes.number,
+  style: PropTypes.any,
+  onClick: PropTypes.func,
 };

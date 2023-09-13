@@ -3,17 +3,23 @@ import tomato from "../../../src/assets/tomatoes.svg";
 import play from "../../../src/assets/Play.svg";
 import Button from "../ui/button";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const Hero = (props) => {
+  const navigate = useNavigate();
+  
   return (
     <div className="w-fit px-4 lg:px-20 flex flex-col gap-y-4">
-      <h1 id="movie-title" className="font-bold stroke-black stroke-[2px] w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]">
+      <h1
+        id="movie-title"
+        className="font-bold stroke-black stroke-[2px] w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
+      >
         {props.title}
       </h1>
       <div className="flex gap-x-8 w-fit items-center">
         <span className="flex gap-x-[10px] items-center">
           <img src={imdb} alt="" />
-          <p className="text-xs">86.0 / 100</p>
+          <p className="text-xs">{props.vote_count} / 100</p>
         </span>
 
         <span className="flex gap-x-[10px] items-center">
@@ -28,7 +34,10 @@ const Hero = (props) => {
         </p>
       </div>
 
-      <Button className="bg-buttonred w-fit">
+      <Button
+        onClick={() => navigate(`/movie/${props.id}`)}
+        className="bg-buttonred w-fit"
+      >
         <img src={play} alt="" />
         Watch trailer
       </Button>
@@ -39,6 +48,9 @@ const Hero = (props) => {
 export default Hero;
 
 Hero.propTypes = {
+  id: PropTypes.number,
   title: PropTypes.string,
   description: PropTypes.string,
+  vote_count: PropTypes.number,
 };
+// validating proptypes
