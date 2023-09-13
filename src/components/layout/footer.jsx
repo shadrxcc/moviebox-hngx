@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <div className="flex flex-col gap-y-[36px] py-20 items-center">
       <div className="flex gap-x-[48px] items-center">
-        <img src={facebook} alt="" />
-        <img src={instagram} alt="" />
-        <img src={twitter} alt="" />
-        <img src={youtube} alt="" />
+        <img src={facebook} alt="facebook icon" />
+        <img src={instagram} alt="instagram icon" />
+        <img src={twitter} alt="twitter icon" />
+        <img src={youtube} alt="youtube icon" />
       </div>
 
       <div className="flex flex-col md:flex-row items-center text-[#111827] text-base md:text-lg font-bold gap-x-[48px]">

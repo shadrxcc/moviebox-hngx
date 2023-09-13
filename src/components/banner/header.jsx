@@ -45,12 +45,12 @@ const Header = (props) => {
             onClick={props.setSearch}
             className="md:hidden w-7"
             src={search}
-            alt=""
+            alt="search icon"
           />
           <p className="text-base hidden md:block font-bold leading-6">
             Sign in
           </p>
-          <img src={menu} alt="" />
+          <img src={menu} alt="menu icon" />
         </div>
       </header>
     </>

@@ -35,18 +35,18 @@ const Featuredmovie = (props) => {
         />
         <div className="flex p-4 absolute top-0 w-full justify-between items-center">
           <span id="movietype" className="py-[3px] px-2">
-            <p className="text-xs text-[#111827] font-bold">TV SERIES</p>
+            <p className="text-xs text-[#111827] font-bold">MOVIES</p>
           </span>
 
           <div onClick={handleLikeClick.bind(null)}>
-            <img src={liked ? favactive : favourite} alt="" />
+            <img src={liked ? favactive : favourite} alt="like icon" />
           </div>
         </div>
       </div>
 
       <div className="font-bold flex flex-col gap-y-3">
         <p data-testid="movie-release-date" className="text-xs text-[#9CA3AF]">
-          USA, {props.releasedate}
+         {props.releasedate}
         </p>
         <p data-testid="movie-title" className="text-lg w-fit text-[#111827]">
           {props.title}
@@ -60,13 +60,13 @@ const Featuredmovie = (props) => {
         </span>
 
         <span className="flex gap-x-[10px] items-center">
-          <img src={tomato} alt="" />
+          <img src={tomato} alt="rotten tomatoes" />
           <p className="text-xs">97%</p>
         </span>
       </div>
 
       <div>
-        <p className="text-xs font-bold text-[#9CA3AF]">
+        <p id="genres" className="text-xs font-bold text-[#9CA3AF]">
           Action, Adventure, Horror
         </p>
       </div>
@@ -81,5 +81,5 @@ Featuredmovie.propTypes = {
   background: PropTypes.node,
   title: PropTypes.string,
   releasedate: PropTypes.any,
-  vote_average: PropTypes.number
+  vote_average: PropTypes.string
 };

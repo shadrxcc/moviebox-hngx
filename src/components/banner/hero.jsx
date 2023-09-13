@@ -22,6 +22,7 @@ const Hero = (props) => {
       ) : (
         <div className="w-fit px-4 lg:px-20 flex flex-col gap-y-4">
           <h1
+            data-testid="movie-title"
             id="movie-title"
             className="font-bold w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
           >
@@ -29,12 +30,12 @@ const Hero = (props) => {
           </h1>
           <div className="flex gap-x-8 w-fit items-center">
             <span className="flex gap-x-[10px] items-center">
-              <img src={imdb} alt="" />
+              <img src={imdb} alt="imdb logo" />
               <p className="text-xs">{props.vote_average} / 10</p>
             </span>
 
             <span className="flex gap-x-[10px] items-center">
-              <img src={tomato} alt="" />
+              <img src={tomato} alt="rotten tomatoes logo" />
               <p className="text-xs">97%</p>
             </span>
           </div>
@@ -64,7 +65,7 @@ Hero.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
   description: PropTypes.string,
-  vote_average: PropTypes.number,
-  error: PropTypes.func,
+  vote_average: PropTypes.string,
+  error: PropTypes.string,
 };
 // validating proptypes

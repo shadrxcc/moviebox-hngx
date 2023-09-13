@@ -4,6 +4,7 @@ import { BiLoader } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import Modal from "./layout/modal";
 import PropTypes from "prop-types";
+import { formatToUTC } from "../utils/formatToUTC";
 
 const Search = (props) => {
   const [searchResults, setSearchResults] = useState([]);
@@ -120,14 +121,17 @@ const Search = (props) => {
                 >
                   <div className="flex gap-x-3 items-center">
                     <img
+                      data-testid="movie-poster"
                       loading="lazy"
                       className="w-[4em]"
                       src={`${imageUrl}${movie.poster_path}`}
                       alt=""
                     />
                     <div className="flex flex-col">
-                      <p>{movie.title}</p>
-                      <p>{movie.release_date}</p>
+                      <p data-testid="movie-title">{movie.title}</p>
+                      <p data-testid="movie-release-date">
+                        {formatToUTC(movie.release_date)}
+                      </p>
                     </div>
                   </div>
                 </div>

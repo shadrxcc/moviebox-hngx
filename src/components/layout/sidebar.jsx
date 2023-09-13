@@ -9,7 +9,7 @@ const Sidebar = () => {
       <Link to={`/`}>
         {" "}
         <div className="flex items-center gap-x-6">
-          <img className="w-[40px]" src={logo} alt="" />
+          <img className="w-[40px]" src={logo} alt="logo" />
           <p className="text-lg font-bold leading-6">MovieBox</p>
         </div>
       </Link>
@@ -19,7 +19,7 @@ const Sidebar = () => {
           {sidenav.map((link) => {
             return (
               <li className="flex gap-x-[15px] items-center" key={link.id}>
-                <img src={link.icon} alt="" />
+                <img src={link.icon} alt="link-icon" />
                 <p className="text-xl font-semibold">{link.text}</p>
               </li>
             );
@@ -38,7 +38,7 @@ const Sidebar = () => {
       </div>
 
       <button className="flex items-center">
-        <img src={logout} alt="" />
+        <img src={logout} alt="sign out icon" />
         Log out
       </button>
     </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Featuredmovie from "./featuredmovie";
 import arrow from "../../assets/chevronright.svg";
+import { formatToUTC } from "../../utils/formatToUTC";
 
 const Featuredsection = () => {
   const [featured, setFeatured] = useState([]);
@@ -48,7 +49,7 @@ const Featuredsection = () => {
           <p className="text-xl max-[280]:text-base leading-6 text-buttonred">
             See more
           </p>
-          <img src={arrow} alt="" />
+          <img src={arrow} alt="arrow left" />
         </span>
       </div>
 
@@ -64,7 +65,7 @@ const Featuredsection = () => {
                 key={movie.id}
                 id={movie.id}
                 vote_average={movie.vote_average.toFixed(1)}
-                releasedate={movie.release_date}
+                releasedate={formatToUTC(movie.release_date)}
                 title={movie.original_title}
                 background={movie.poster_path}
               />
