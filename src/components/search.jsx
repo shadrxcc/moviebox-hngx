@@ -1,5 +1,4 @@
 import { useState } from "react";
-import star from "../../src/assets/Star.svg";
 import { MdClear } from "react-icons/md";
 import { BiLoader } from "react-icons/bi";
 import { Link } from "react-router-dom";
@@ -130,11 +129,6 @@ const Search = (props) => {
                       <p>{movie.title}</p>
                       <p>{movie.release_date}</p>
                     </div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <img src={star} alt="" />
-                    <p>{movie.vote_average}</p>
                   </div>
                 </div>
               </Link>

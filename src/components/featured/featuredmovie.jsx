@@ -1,4 +1,4 @@
-import Card from "../ui/card";
+import MovieCard from "../ui/moviecard";
 // import stranger from "../../assets/stranger.svg";
 import favourite from "../../assets/Favorite.svg";
 import favactive from "../../assets/Favorite-active.svg";
@@ -21,7 +21,7 @@ const Featuredmovie = (props) => {
   };
 
   return (
-    <Card
+    <MovieCard
       onClick={() => navigate(`/movie/${props.id}`)}
       key={props.id}
       className="flex flex-col gap-y-3"
@@ -56,7 +56,7 @@ const Featuredmovie = (props) => {
       <div className="flex items-center justify-between">
         <span className="flex gap-x-[10px] items-center">
           <img src={imdb} alt="" />
-          <p className="text-xs">{props.vote_count} / 100</p>
+          <p className="text-xs">{props.vote_average} / 10</p>
         </span>
 
         <span className="flex gap-x-[10px] items-center">
@@ -70,7 +70,7 @@ const Featuredmovie = (props) => {
           Action, Adventure, Horror
         </p>
       </div>
-    </Card>
+    </MovieCard>
   );
 };
 
@@ -81,5 +81,5 @@ Featuredmovie.propTypes = {
   background: PropTypes.node,
   title: PropTypes.string,
   releasedate: PropTypes.any,
-  vote_count: PropTypes.number
+  vote_average: PropTypes.number
 };

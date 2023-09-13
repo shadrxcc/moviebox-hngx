@@ -77,7 +77,7 @@ const Banner = (props) => {
         <Hero
           error={error}
           id={upcoming[currentIndex].id}
-          vote_count={upcoming[currentIndex].vote_count}
+          vote_average={upcoming[currentIndex].vote_average.toFixed(1)}
           title={shortenText(upcoming[currentIndex].title, 21)}
           description={shortenText(upcoming[currentIndex].overview, 260)}
         />

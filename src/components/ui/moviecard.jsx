@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 //custom card component
-const Card = (props) => {
+const MovieCard = (props) => {
   const classes = `card ${props.className}`;
   return (
     <div onClick={props.onClick} data-testid="movie-card" className={classes}>
@@ -10,9 +10,9 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default MovieCard;
 
-Card.propTypes = {
+MovieCard.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,
   onClick: PropTypes.func,
