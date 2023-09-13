@@ -20,7 +20,6 @@ const Featuredsection = () => {
         if (response.ok) {
           const data = await response.json();
           setFeatured(data.results);
-          console.log(data);
         } else {
           console.error(
             "Failed to fetch data:",
@@ -35,7 +34,6 @@ const Featuredsection = () => {
     getTopRated();
   }, [apiUrl, accesstoken]);
 
-  console.log(featured);
   return (
     <div className="text-black flex flex-col gap-x-20 gap-y-10 px-4 lg:px-20">
       <div className="flex items-center justify-between">
