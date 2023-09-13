@@ -3,6 +3,7 @@ import Hero from "./hero";
 import Wrapper from "../wrapper";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
+import { shortenText } from "../../utils/shortenTextFunc";
 
 const Banner = (props) => {
   const [upcoming, setUpcoming] = useState([]);
@@ -66,8 +67,8 @@ const Banner = (props) => {
       <Header setSearch={props.setSearch} />
       {isValidIndex && (
         <Hero
-          title={upcoming[currentIndex].title}
-          description={upcoming[currentIndex].overview}
+          title={shortenText(upcoming[currentIndex].title, 21)}
+          description={shortenText(upcoming[currentIndex].overview, 267)}
         />
       )}
     </Wrapper>
