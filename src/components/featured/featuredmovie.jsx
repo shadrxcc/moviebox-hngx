@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-
 //featured movie card layout
 const Featuredmovie = (props) => {
   const imageUrl = import.meta.env.VITE_IMAGE_URL;
@@ -28,6 +27,7 @@ const Featuredmovie = (props) => {
     >
       <div className="relative">
         <img
+          style={{ backgroundColor: "lightgray" }}
           loading="lazy"
           data-testid="movie-poster"
           src={`${imageUrl}${props.background}`}
@@ -46,7 +46,7 @@ const Featuredmovie = (props) => {
 
       <div className="font-bold flex flex-col gap-y-3">
         <p data-testid="movie-release-date" className="text-xs text-[#9CA3AF]">
-         {props.releasedate}
+          {props.releasedate}
         </p>
         <p data-testid="movie-title" className="text-lg w-fit text-[#111827]">
           {props.title}
@@ -81,5 +81,5 @@ Featuredmovie.propTypes = {
   background: PropTypes.node,
   title: PropTypes.string,
   releasedate: PropTypes.any,
-  vote_average: PropTypes.string
+  vote_average: PropTypes.string,
 };
