@@ -24,7 +24,7 @@ const Hero = (props) => {
           <h1
             data-testid="movie-title"
             id="movie-title"
-            className="font-bold w-[5em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
+            className="font-bold w-[5em] md:w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
           >
             {props.title}
           </h1>
