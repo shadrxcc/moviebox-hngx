@@ -1,6 +1,7 @@
 @font-face {
   font-family: "DMSans";
   src: url(./assets/font/DMSans-Regular.ttf);
+  font-display: swap;
 }
 
 html body {
@@ -18,11 +19,6 @@ html body {
 @tailwind utilities;
 
 .banner {
-  /* background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.5) 100%
-    ), lightgray 50%; */
   width: 100%;
   background-position: center;
   background-size: cover;
