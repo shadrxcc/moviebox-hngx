@@ -11,11 +11,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Wrapper from "../wrapper";
 import { formatToUTC } from "../../utils/formatToUTC";
+import { BiLoader } from "react-icons/bi";
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const detailUrl = import.meta.env.VITE_MOVIE_DETAILS;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
@@ -34,10 +36,13 @@ const MovieDetails = () => {
           });
           const data = await response.json();
           setDetails(data);
+          setLoading(true);
         }
       } catch (err) {
         console.log(err);
         setError("Error getting movie details :(");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -56,7 +61,11 @@ const MovieDetails = () => {
           <p className=" underline text-xl">Back</p>
         </button>
 
-        {error ? (
+        {loading ? (
+         <div className="flex items-center w-full justify-center h-full">
+         <BiLoader id="loader" className="text-buttonred" size={70} />
+       </div>
+        ) : error ? (
           <div className="flex justify-center items-center">
             <p className="text-buttonred m-auto text-2xl max-[280]:text-base md:text-[36px]">
               {error}

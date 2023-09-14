@@ -33,7 +33,7 @@ const Banner = (props) => {
           setError("Error getting movies");
         }
       } catch (error) {
-        setError("Network Error");
+        setError("Network Error :(");
       }
     };
 
@@ -70,7 +70,7 @@ const Banner = (props) => {
             }
           : null
       }
-      className="banner flex flex-col gap-y-16"
+      className="banner h-[650px] md:h-[600px] flex flex-col gap-y-16"
     >
       <Header setSearch={props.setSearch} />
       {isValidIndex && (

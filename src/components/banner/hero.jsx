@@ -11,7 +11,7 @@ const Hero = (props) => {
   return (
     <>
       {props.error ? (
-        <div className="w-fit px-4 lg:px-20 flex flex-col gap-y-4">
+        <div className="w-full px-4 lg:px-20 flex justify-center items-center flex-col gap-y-4">
           <h1
             id="error-message"
             className="font-bold w-[7em] max-[280px]:text-[30px] text-black max-[280px]:w-auto text-[48px]"
@@ -24,7 +24,7 @@ const Hero = (props) => {
           <h1
             data-testid="movie-title"
             id="movie-title"
-            className="font-bold w-[7em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
+            className="font-bold w-[5em] max-[280px]:text-[30px] max-[280px]:w-auto text-[48px]"
           >
             {props.title}
           </h1>
