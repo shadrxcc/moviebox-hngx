@@ -13,7 +13,7 @@ const Header = (props) => {
       {/* header: on details page show only on mobile screens  */}
       <header
         className={`${
-          location.pathname === `/movie/${id}` ? "md:hidden" : ""
+          location.pathname === `/movies/${id}` ? "md:hidden" : ""
         } text-white py-6 px-4 lg:px-20 flex justify-between items-center`}
       >
         <Link to={`/`}>
@@ -22,7 +22,7 @@ const Header = (props) => {
             <img className="w-[40px]" src={logo} alt="moviebox logo" />
             <p
               className={`${
-                location.pathname === `/movie/${id}` ? "text-black" : ""
+                location.pathname === `/movies/${id}` ? "text-black" : ""
               } text-lg font-bold leading-6`}
             >
               MovieBox
