@@ -40,13 +40,12 @@ const Banner = (props) => {
     getUpcoming();
   }, [apiUrl, accesstoken]);
 
-  //move to next movie's index function
-  const moveToNextItem = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % upcoming.length);
-  };
-
   // move to next movie's id on set interval
   useEffect(() => {
+    //move to next movie's index function
+    const moveToNextItem = () => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % upcoming.length);
+    };
     const interval = setInterval(moveToNextItem, 5000);
     return () => clearInterval(interval);
   }, [upcoming]);
@@ -79,7 +78,7 @@ const Banner = (props) => {
           id={upcoming[currentIndex].id}
           vote_average={upcoming[currentIndex].vote_average.toFixed(1)}
           title={shortenText(upcoming[currentIndex].title, 21)}
-          description={shortenText(upcoming[currentIndex].overview, 260)}
+          description={shortenText(upcoming[currentIndex].overview, 240)}
         />
       )}
     </Wrapper>

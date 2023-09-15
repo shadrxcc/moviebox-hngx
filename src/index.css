@@ -108,13 +108,13 @@ html body {
   display: flex;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
-  animation: scale .4s ease-in-out forwards;
+  animation: scale 0.4s ease-in-out forwards;
   transition: all;
 }
 
 @keyframes scale {
   0% {
-   transform: scaleX(0);
+    transform: scaleX(0);
   }
 
   100% {

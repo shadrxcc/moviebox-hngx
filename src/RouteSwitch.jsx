@@ -13,7 +13,7 @@ const RouteSwitch = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><Home /></Suspense>} />
-        <Route path="/movie/:id" element={<Suspense fallback={<div>Loading...</div>}><Details /></Suspense>} />
+        <Route path="/movies/:id" element={<Suspense fallback={<div>Loading...</div>}><Details /></Suspense>} />
         <Route path="/search" element={<Suspense fallback={<div>Loading...</div>}><Search /></Suspense>} />
       </Routes>
     </>
