@@ -69,7 +69,7 @@ const Banner = (props) => {
             }
           : null
       }
-      className="banner h-[650px] md:h-[600px] flex flex-col gap-y-16"
+      className="banner h-[700px] md:h-[600px] flex flex-col gap-y-16"
     >
       <Header setSearch={props.setSearch} />
       {isValidIndex && (
