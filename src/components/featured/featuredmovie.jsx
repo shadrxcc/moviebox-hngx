@@ -21,7 +21,7 @@ const Featuredmovie = (props) => {
 
   return (
     <MovieCard
-      onClick={() => navigate(`/movie/${props.id}`)}
+      onClick={() => navigate(`/movies/${props.id}`)}
       key={props.id}
       className="flex flex-col gap-y-3"
     >
