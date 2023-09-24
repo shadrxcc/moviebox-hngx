@@ -21,6 +21,7 @@ const MovieDetails = () => {
   const [videos, setVideos] = useState([]);
   const [play, setPlay] = useState(false);
   const [stars, setStars] = useState([]);
+  const [directors, setDirectors] = useState([]) 
 
   const detailUrl = import.meta.env.VITE_MOVIE_DETAILS;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
@@ -42,13 +43,16 @@ const MovieDetails = () => {
             }
           );
           const data = await response.json();
+          setLoading(true);
           setDetails(data);
           const video = data.videos.results[0];
           setVideos(video);
           const star = data.credits.cast.slice(0, 5);
           setStars(star);
-          console.log(data);
-          setLoading(true);
+          const director = data.credits.crew.find((dir) => {
+            return dir.job === "Director"
+          })
+          setDirectors(director)
         }
       } catch (err) {
         console.log(err);
@@ -160,7 +164,7 @@ const MovieDetails = () => {
 
                 <p>
                   Director:{" "}
-                  <span className="text-buttonred">Joseph Kosinski</span>
+                  <span className="text-buttonred">{directors.name}</span>
                 </p>
                 {stars && (
                   <p>
