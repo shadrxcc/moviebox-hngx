@@ -20,6 +20,7 @@ const MovieDetails = () => {
   const [loading, setLoading] = useState(true);
   const [videos, setVideos] = useState([]);
   const [play, setPlay] = useState(false);
+  const [stars, setStars] = useState([]);
 
   const detailUrl = import.meta.env.VITE_MOVIE_DETAILS;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
@@ -32,7 +33,7 @@ const MovieDetails = () => {
       try {
         if (id !== null) {
           const response = await fetch(
-            `${detailUrl}${id}?api_key=${apiKey}&append_to_response=videos`,
+            `${detailUrl}${id}?api_key=${apiKey}&append_to_response=videos,credits`,
             {
               headers: {
                 "Content-Type": "application/json",
@@ -44,6 +45,8 @@ const MovieDetails = () => {
           setDetails(data);
           const video = data.videos.results[0];
           setVideos(video);
+          const star = data.credits.cast.slice(0, 5);
+          setStars(star);
           console.log(data);
           setLoading(true);
         }
@@ -159,13 +162,18 @@ const MovieDetails = () => {
                   Director:{" "}
                   <span className="text-buttonred">Joseph Kosinski</span>
                 </p>
-
-                <p>
-                  Stars:{" "}
-                  <span className="text-buttonred">
-                    Tom Cruise, Jennifer Connelly, Miles Teller
-                  </span>
-                </p>
+                {stars && (
+                  <p>
+                    Stars:{" "}
+                    {stars.map((actor) => {
+                      return (
+                        <span key={actor.cast_id} className="text-buttonred">
+                          {actor.name + ' '}
+                        </span>
+                      );
+                    })}
+                  </p>
+                )}
 
                 <span className="flex gap-x-6 items-center border border-[#C7C7C7] rounded-[10px]">
                   <Button className="bg-buttonred flex-1 text-white text-sm lg:text-xl font-medium">
