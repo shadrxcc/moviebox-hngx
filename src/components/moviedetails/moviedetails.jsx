@@ -44,7 +44,6 @@ const MovieDetails = () => {
           const data = await response.json();
           setLoading(true);
           setDetails(data);
-          console.log(data);
           const video = data.videos.results[0];
           setVideos(video);
           const star = data.credits.cast.slice(0, 5);
@@ -203,34 +202,36 @@ const MovieDetails = () => {
                     <p>More watch options</p>
                   </Button>
                 </div>
-                <Link to={`/similar-movies/${id}`}>
-                  <div className="relative rounded-[10px]">
-                    <div className="flex gap-x-1 rounded-[10px]">
-                      {similar.map((mov) => {
-                        return (
-                          <div
-                            className="w-full bg-cover bg-no-repeat rounded-[10px] h-[15em]"
-                            style={{
-                              backgroundImage: `url(${imageUrl}${mov.poster_path})`,
-                              backgroundColor: "lightgray",
-                            }}
-                            key={mov.id}
-                          ></div>
-                        );
-                      })}
-                    </div>
+                {similar.length === 0 ? null : (
+                  <Link to={`/similar-movies/${id}`}>
+                    <div className="relative rounded-[10px]">
+                      <div className="flex gap-x-1 rounded-[10px]">
+                        {similar.map((mov) => {
+                          return (
+                            <div
+                              className="w-full bg-cover bg-no-repeat rounded-[10px] h-[15em]"
+                              style={{
+                                backgroundImage: `url(${imageUrl}${mov.poster_path})`,
+                                backgroundColor: "lightgray",
+                              }}
+                              key={mov.id}
+                            ></div>
+                          );
+                        })}
+                      </div>
 
-                    <div
-                      id="best-movies"
-                      className="flex absolute w-full bottom-0 items-center gap-x-3"
-                    >
-                      <img src={listwhite} alt="" />
-                      <p className="text-[#E8E8E8] text-sm font-medium">
-                        Similar movies
-                      </p>
+                      <div
+                        id="best-movies"
+                        className="flex absolute w-full bottom-0 items-center gap-x-3"
+                      >
+                        <img src={listwhite} alt="" />
+                        <p className="text-[#E8E8E8] text-sm font-medium">
+                          Similar movies
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                )}
               </div>
             </div>
           </>

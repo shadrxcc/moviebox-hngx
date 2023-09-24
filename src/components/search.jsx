@@ -114,7 +114,7 @@ const Search = (props) => {
             {error && <p className="text-black text-lg font-medium">{error}</p>}
 
             {searchResults.map((movie) => (
-              <Link to={`/movies/${movie.id}`} key={movie.id}>
+              <Link onClick={props.onClose} to={`/movies/${movie.id}`} key={movie.id}>
                 <div
                   key={movie.id}
                   className="text-gray-800 border-b pb-1 flex justify-between items-center"

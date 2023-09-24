@@ -33,7 +33,10 @@ const SimilarMovies = () => {
           );
           const data = await response.json();
           //   setLoading(true);
-          setSimilar(data.similar.results);
+          const filter = data.similar.results.filter((movie) => {
+            return movie.poster_path !== null
+          })
+          setSimilar(filter);
           setTarget(data);
           console.log(data);
         }
@@ -47,6 +50,8 @@ const SimilarMovies = () => {
 
     fetchDetails();
   }, [id, accesstoken, apiKey, detailUrl]);
+
+  console.log(similar)
 
   return (
     <>
