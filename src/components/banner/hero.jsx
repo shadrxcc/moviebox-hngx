@@ -47,7 +47,7 @@ const Hero = (props) => {
           </div>
 
           <Button
-            onClick={() => navigate(`/movie/${props.id}`)}
+            onClick={() => navigate(`/movies/${props.id}`)}
             className="bg-buttonred w-fit"
           >
             <img src={play} alt="" />

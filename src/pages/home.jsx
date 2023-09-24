@@ -1,20 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Banner from "../components/banner/banner";
 import Featuredsection from "../components/featured/featuredsection";
 import Footer from "../components/layout/footer";
 import Wrapper from "../components/wrapper";
 import Search from "../components/search";
+import { SearchContext } from "../components/context/searchcontext";
 
 const Home = () => {
-  const [search, setSearch] = useState(false);
+  const { search, hideSearch, showSearch } = useContext(SearchContext)
 
-  const hideSearch = () => {
-    setSearch(false);
-  };
-
-  const showSearch = () => {
-    setSearch(true);
-  };
   return (
     <>
       {search && <Search onClose={hideSearch} />}

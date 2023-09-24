@@ -3,11 +3,10 @@ import star from "../../../src/assets/Star.svg";
 import Button from "../../components/ui/button";
 import tickets from "../../../src/assets/TwoTickets.svg";
 import list from "../../../src/assets/List.svg";
-import best from "../../../src/assets/best.svg";
 import arrow from "../../../src/assets/chevronright.svg";
 import arrowdown from "../../assets/ExpandArrow.svg";
 import listwhite from "../../../src/assets/Listwhite.svg";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Wrapper from "../wrapper";
 import { BiLoader } from "react-icons/bi";
@@ -20,7 +19,8 @@ const MovieDetails = () => {
   const [videos, setVideos] = useState([]);
   const [play, setPlay] = useState(false);
   const [stars, setStars] = useState([]);
-  const [directors, setDirectors] = useState([]) 
+  const [directors, setDirectors] = useState([]);
+  const [similar, setSimilar] = useState([]);
 
   const detailUrl = import.meta.env.VITE_MOVIE_DETAILS;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
@@ -33,7 +33,7 @@ const MovieDetails = () => {
       try {
         if (id !== null) {
           const response = await fetch(
-            `${detailUrl}${id}?api_key=${apiKey}&append_to_response=videos,credits`,
+            `${detailUrl}${id}?api_key=${apiKey}&append_to_response=videos,credits,similar`,
             {
               headers: {
                 "Content-Type": "application/json",
@@ -44,14 +44,17 @@ const MovieDetails = () => {
           const data = await response.json();
           setLoading(true);
           setDetails(data);
+          console.log(data);
           const video = data.videos.results[0];
           setVideos(video);
           const star = data.credits.cast.slice(0, 5);
           setStars(star);
           const director = data.credits.crew.find((dir) => {
-            return dir.job === "Director"
-          })
-          setDirectors(director)
+            return dir.job === "Director";
+          });
+          setDirectors(director);
+          const morelike = data.similar.results.slice(0, 3);
+          setSimilar(morelike);
         }
       } catch (err) {
         console.log(err);
@@ -171,7 +174,7 @@ const MovieDetails = () => {
                     {stars.map((actor) => {
                       return (
                         <span key={actor.cast_id} className="text-buttonred">
-                          {actor.name + ' '}
+                          {actor.name + " "}
                         </span>
                       );
                     })}
@@ -200,20 +203,34 @@ const MovieDetails = () => {
                     <p>More watch options</p>
                   </Button>
                 </div>
+                <Link to={`/similar-movies/${id}`}>
+                  <div className="relative rounded-[10px]">
+                    <div className="flex gap-x-1 rounded-[10px]">
+                      {similar.map((mov) => {
+                        return (
+                          <div
+                            className="w-full bg-cover bg-no-repeat rounded-[10px] h-[15em]"
+                            style={{
+                              backgroundImage: `url(${imageUrl}${mov.poster_path})`,
+                              backgroundColor: "lightgray",
+                            }}
+                            key={mov.id}
+                          ></div>
+                        );
+                      })}
+                    </div>
 
-                <div className="relative">
-                  <img className="w-full" src={best} alt="" />
-
-                  <div
-                    id="best-movies"
-                    className="flex absolute w-full bottom-0 items-center gap-x-3"
-                  >
-                    <img src={listwhite} alt="" />
-                    <p className="text-[#E8E8E8] text-sm font-medium">
-                      The Best Movies and Shows in September
-                    </p>
+                    <div
+                      id="best-movies"
+                      className="flex absolute w-full bottom-0 items-center gap-x-3"
+                    >
+                      <img src={listwhite} alt="" />
+                      <p className="text-[#E8E8E8] text-sm font-medium">
+                        Similar movies
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </Link>
               </div>
             </div>
           </>

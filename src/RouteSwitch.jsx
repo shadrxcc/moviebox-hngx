@@ -6,15 +6,45 @@ import ScrollToTop from "./utils/ScrollToTop";
 const Home = lazy(() => import("./pages/home"));
 const Details = lazy(() => import("./pages/details"));
 const Search = lazy(() => import("./components/search"));
+const Similar = lazy(() => import("./pages/similarmovies"));
 
 const RouteSwitch = () => {
   return (
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><Home /></Suspense>} />
-        <Route path="/movies/:id" element={<Suspense fallback={<div>Loading...</div>}><Details /></Suspense>} />
-        <Route path="/search" element={<Suspense fallback={<div>Loading...</div>}><Search /></Suspense>} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/movies/:id"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Details />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Search />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/similar-movies/:id"
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Similar />
+            </Suspense>
+          }
+        />
       </Routes>
     </>
   );

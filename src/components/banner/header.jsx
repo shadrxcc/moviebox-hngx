@@ -22,7 +22,9 @@ const Header = (props) => {
             <img className="w-[40px]" src={logo} alt="moviebox logo" />
             <p
               className={`${
-                location.pathname === `/movies/${id}` ? "text-black" : ""
+                location.pathname === `/movies/${id}` || `/similar-movies/${id}`
+                  ? "text-black"
+                  : ""
               } text-lg font-bold leading-6`}
             >
               MovieBox
@@ -33,7 +35,9 @@ const Header = (props) => {
         {/* search modal button toggle to show on tab and desktop screens */}
         <button
           onClick={props.setSearch}
-          className="hidden md:flex px-[10px] md:w-[25rem] lg:w-[35rem] py-[6px] border rounded-md border-[#D1D5DB] justify-between items-center"
+          className={`${
+            location.pathname === `/similar-movies/${id}` ? "text-black" : ""
+          } hidden md:flex px-[10px] md:w-[25rem] lg:w-[35rem] py-[6px] border rounded-md border-[#D1D5DB] justify-between items-center`}
         >
           <p>What do you want to watch?</p>
 
