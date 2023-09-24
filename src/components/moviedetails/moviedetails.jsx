@@ -18,24 +18,33 @@ const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [videos, setVideos] = useState([]);
+  const [play, setPlay] = useState(false);
 
   const detailUrl = import.meta.env.VITE_MOVIE_DETAILS;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
   const imageUrl = import.meta.env.VITE_IMAGE_URL;
+  const apiKey = import.meta.env.VITE_API_KEY;
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchDetails = async () => {
       try {
         if (id !== null) {
-          const response = await fetch(`${detailUrl}${id}`, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${accesstoken}`,
-            },
-          });
+          const response = await fetch(
+            `${detailUrl}${id}?api_key=${apiKey}&append_to_response=videos`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accesstoken}`,
+              },
+            }
+          );
           const data = await response.json();
           setDetails(data);
+          const video = data.videos.results[0];
+          setVideos(video);
+          console.log(data);
           setLoading(true);
         }
       } catch (err) {
@@ -47,7 +56,7 @@ const MovieDetails = () => {
     };
 
     fetchDetails();
-  }, [id, accesstoken, detailUrl]);
+  }, [id, accesstoken, apiKey, detailUrl]);
 
   return (
     <Wrapper>
@@ -62,9 +71,9 @@ const MovieDetails = () => {
         </button>
 
         {loading ? (
-         <div className="flex items-center w-full justify-center h-full">
-         <BiLoader id="loader" className="text-buttonred" size={70} />
-       </div>
+          <div className="flex items-center w-full justify-center h-full">
+            <BiLoader id="loader" className="text-buttonred" size={70} />
+          </div>
         ) : error ? (
           <div className="flex justify-center items-center">
             <p className="text-buttonred m-auto text-2xl max-[280]:text-base md:text-[36px]">
@@ -73,6 +82,14 @@ const MovieDetails = () => {
           </div>
         ) : (
           <>
+            {play && (
+              <iframe
+                src={`https://www.youtube.com/embed/${videos.key}`}
+                style={{ backgroundColor: "lightgray" }}
+                className="w-full h-[70vh] rounded-xl"
+                title=""
+              ></iframe>
+            )}
             <div
               style={{
                 backgroundImage: `url(${imageUrl}${details.backdrop_path})`,
@@ -80,12 +97,12 @@ const MovieDetails = () => {
               }}
               className="trailer flex flex-col justify-center w-full"
             >
-              <div className="flex flex-col items-center">
+              <button className="flex hover:scale-[1.03] ease-in-out duration-300 transition-all flex-col items-center">
                 <img src={watch} alt="" />
                 <p className="text-2xl font-medium text-[#E8E8E8]">
                   Watch Trailer
                 </p>
-              </div>
+              </button>
             </div>
 
             <div className="flex flex-col lg:flex-row justify-between gap-y-4 py-8 sm:items-center">

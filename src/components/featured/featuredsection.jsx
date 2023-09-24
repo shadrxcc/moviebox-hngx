@@ -59,7 +59,7 @@ const Featuredsection = () => {
         </p>
       ) : (
         <div className="grid gap-y-20 gap-x-20 md:grid-cols-3 xl:grid-cols-4">
-          {featured.slice(0, 10).map((movie) => {
+          {featured.map((movie) => {
             return (
               <Featuredmovie
                 key={movie.id}
