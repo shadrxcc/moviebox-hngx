@@ -23,10 +23,11 @@ const Header = (props) => {
             <img className="w-[40px]" src={logo} alt="moviebox logo" />
             <p
               className={`${
-                location.pathname === `/movies/${id}` || `/similar-movies/${id}`
+                location.pathname === `/movies/${id}` ||
+                location.pathname === `/similar-movies/${id}`
                   ? "text-black"
-                  : ""
-              } text-lg font-bold text-white leading-6`}
+                  : "text-white"
+              } text-lg font-bold leading-6`}
             >
               MovieBox
             </p>
@@ -57,12 +58,14 @@ const Header = (props) => {
             onClick={props.setSearch}
             className="md:hidden w-7"
             src={
+              location.pathname === `/movies/${id}` ||
               location.pathname === `/similar-movies/${id}`
                 ? darksearch
                 : search
             }
             alt="search icon"
           />
+
           <p className="text-base hidden md:block font-bold leading-6">
             Sign in
           </p>
