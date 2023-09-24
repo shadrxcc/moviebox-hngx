@@ -139,6 +139,8 @@ const Search = (props) => {
             ))}
           </div>
         </div>
+
+        <div className="w-full h-screen" onClick={props.onClose}></div>
       </div>
     </Modal>
   );

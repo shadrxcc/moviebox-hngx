@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Featuredmovie from "./featuredmovie";
-import arrow from "../../assets/chevronright.svg";
+// import arrow from "../../assets/chevronright.svg";
 import { formatToUTC } from "../../utils/formatToUTC";
 
 const Featuredsection = () => {
@@ -45,12 +45,12 @@ const Featuredsection = () => {
           Featured Movies
         </h2>
 
-        <span className="flex items-center gap-x-2">
+        {/* <span className="flex items-center gap-x-2">
           <p className="text-xl max-[280]:text-base leading-6 text-buttonred">
             See more
           </p>
           <img src={arrow} alt="arrow left" />
-        </span>
+        </span> */}
       </div>
 
       {error ? (

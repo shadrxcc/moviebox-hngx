@@ -1,13 +1,18 @@
 import { useParams } from "react-router-dom";
 import Featuredmovie from "../components/featured/featuredmovie";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Wrapper from "../components/wrapper";
 import Header from "../components/banner/header";
+import { SearchContext } from "../components/context/searchcontext";
+import Search from "../components/search";
+import Footer from "../components/layout/footer";
 
 const SimilarMovies = () => {
   const { id } = useParams();
   const [similar, setSimilar] = useState([]);
   const [target, setTarget] = useState([]);
+
+  const { search, hideSearch, showSearch } = useContext(SearchContext)
 
   const detailUrl = import.meta.env.VITE_MOVIE_DETAILS;
   const accesstoken = import.meta.env.VITE_ACCESS_TOKEN;
@@ -44,29 +49,34 @@ const SimilarMovies = () => {
   }, [id, accesstoken, apiKey, detailUrl]);
 
   return (
-    <Wrapper className={`flex flex-col gap-y-16`}>
-      <Header />
-      <div className="px-4 flex flex-col gap-y-10 lg:px-20">
-        <h1 className="text-2xl text-black max-[280]:text-base md:text-[36px] h-fit font-bold">
-          Similar movies to{" "}
-          <span className="text-buttonred">{target.title}</span>
-        </h1>
-        <div className="grid gap-y-20 gap-x-20 md:grid-cols-3 xl:grid-cols-4">
-          {similar.map((movie) => {
-            return (
-              <Featuredmovie
-                key={movie.id}
-                id={movie.id}
-                vote_average={movie.vote_average.toFixed(1)}
-                releasedate={movie.release_date}
-                title={movie.original_title}
-                background={movie.poster_path}
-              />
-            );
-          })}
+    <>
+    {search && <Search onClose={hideSearch} />}
+      {" "}
+      <Wrapper className={`flex flex-col gap-y-16`}>
+        <Header setSearch={showSearch} />
+        <div className="px-4 flex flex-col gap-y-10 lg:px-20">
+          <h1 className=" text-black text-2xl md:text-[36px] h-fit font-bold">
+            Similar movies to{" "}
+            <span className="text-buttonred">{target.title}</span>
+          </h1>
+          <div className="grid gap-y-20 gap-x-20 md:grid-cols-3 xl:grid-cols-4">
+            {similar.map((movie) => {
+              return (
+                <Featuredmovie
+                  key={movie.id}
+                  id={movie.id}
+                  vote_average={movie.vote_average.toFixed(1)}
+                  releasedate={movie.release_date}
+                  title={movie.original_title}
+                  background={movie.poster_path}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </Wrapper>
+        <Footer/>
+      </Wrapper>
+    </>
   );
 };
 

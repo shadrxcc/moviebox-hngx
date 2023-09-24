@@ -1,5 +1,6 @@
 import logo from "../../assets/tv.svg";
 import search from "../../assets/Search.svg";
+import darksearch from "../../assets/darksearch.svg";
 import menu from "../../assets/Menu.svg";
 import { Link, useLocation, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -25,7 +26,7 @@ const Header = (props) => {
                 location.pathname === `/movies/${id}` || `/similar-movies/${id}`
                   ? "text-black"
                   : ""
-              } text-lg font-bold leading-6`}
+              } text-lg font-bold text-white leading-6`}
             >
               MovieBox
             </p>
@@ -41,14 +42,25 @@ const Header = (props) => {
         >
           <p>What do you want to watch?</p>
 
-          <img src={search} alt="" />
+          <img
+            src={
+              location.pathname === `/similar-movies/${id}`
+                ? darksearch
+                : search
+            }
+            alt=""
+          />
         </button>
 
         <div className="flex gap-x-4 md:gap-x-7 items-center">
           <img
             onClick={props.setSearch}
             className="md:hidden w-7"
-            src={search}
+            src={
+              location.pathname === `/similar-movies/${id}`
+                ? darksearch
+                : search
+            }
             alt="search icon"
           />
           <p className="text-base hidden md:block font-bold leading-6">

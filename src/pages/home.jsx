@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Banner from "../components/banner/banner";
 import Featuredsection from "../components/featured/featuredsection";
 import Footer from "../components/layout/footer";

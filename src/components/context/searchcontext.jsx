@@ -1,19 +1,28 @@
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
-export const SearchContext = createContext({})
+export const SearchContext = createContext({});
 
 const SearchProvider = (props) => {
-    const [search, setSearch] = useState(false);
+  const [search, setSearch] = useState(false);
 
-    const hideSearch = () => {
-      setSearch(false);
-    };
-  
-    const showSearch = () => {
-      setSearch(true);
-    };
+  const hideSearch = () => {
+    setSearch(false);
+  };
 
-    return <SearchContext.Provider value={{search, hideSearch, showSearch}}>{props.children}</SearchContext.Provider>
-}
+  const showSearch = () => {
+    setSearch(true);
+  };
 
-export default SearchProvider
+  return (
+    <SearchContext.Provider value={{ search, hideSearch, showSearch }}>
+      {props.children}
+    </SearchContext.Provider>
+  );
+};
+
+export default SearchProvider;
+
+SearchProvider.propTypes = {
+  children: PropTypes.node,
+};
