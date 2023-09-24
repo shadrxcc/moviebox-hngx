@@ -86,24 +86,29 @@ const MovieDetails = () => {
               <iframe
                 src={`https://www.youtube.com/embed/${videos.key}`}
                 style={{ backgroundColor: "lightgray" }}
-                className="w-full h-[70vh] rounded-xl"
+                className="w-full border h-[70vh] rounded-xl"
                 title=""
               ></iframe>
             )}
-            <div
-              style={{
-                backgroundImage: `url(${imageUrl}${details.backdrop_path})`,
-                backgroundColor: "lightgray",
-              }}
-              className="trailer flex flex-col justify-center w-full"
-            >
-              <button className="flex hover:scale-[1.03] ease-in-out duration-300 transition-all flex-col items-center">
-                <img src={watch} alt="" />
-                <p className="text-2xl font-medium text-[#E8E8E8]">
-                  Watch Trailer
-                </p>
-              </button>
-            </div>
+            {!play && (
+              <div
+                style={{
+                  backgroundImage: `url(${imageUrl}${details.backdrop_path})`,
+                  backgroundColor: "lightgray",
+                }}
+                className="trailer flex flex-col justify-center w-full"
+              >
+                <button
+                  onClick={() => setPlay(true)}
+                  className="flex hover:scale-[1.03] ease-in-out duration-300 transition-all flex-col items-center"
+                >
+                  <img src={watch} alt="" />
+                  <p className="text-2xl font-medium text-[#E8E8E8]">
+                    Watch Trailer
+                  </p>
+                </button>
+              </div>
+            )}
 
             <div className="flex flex-col lg:flex-row justify-between gap-y-4 py-8 sm:items-center">
               <div className="flex flex-1 flex-col lg:flex-row gap-y-4 gap-x-4 sm:items-center">
@@ -111,7 +116,7 @@ const MovieDetails = () => {
                   <div className="flex flex-col sm:items-center gap-x-3 sm:flex-row lg:flex-col xl:flex-row">
                     <p data-testid="movie-title">{details.title} •</p>
                     <p className="text-base" data-testid="movie-release-date">
-                      {formatToUTC(details.release_date)}
+                      {details.release_date}
                     </p>
                   </div>
                   <div className="flex text-base gap-x-3">
