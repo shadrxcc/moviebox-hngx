@@ -10,7 +10,6 @@ import listwhite from "../../../src/assets/Listwhite.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Wrapper from "../wrapper";
-import { formatToUTC } from "../../utils/formatToUTC";
 import { BiLoader } from "react-icons/bi";
 
 const MovieDetails = () => {
