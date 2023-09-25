@@ -117,7 +117,7 @@ const Search = (props) => {
               <Link onClick={props.onClose} to={`/movies/${movie.id}`} key={movie.id}>
                 <div
                   key={movie.id}
-                  className="text-gray-800 border-b pb-1 flex justify-between items-center"
+                  className="text-gray-800 hide-scrollbar border-b pb-1 flex justify-between items-center"
                 >
                   <div className="flex gap-x-3 items-center">
                     <img
